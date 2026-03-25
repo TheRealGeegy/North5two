@@ -1,0 +1,58 @@
+server:
+  bind:
+    host: 0.0.0.0
+    port: 80
+  url: http://localhost:5000
+  mimetype: application/json; charset=UTF-8
+  encoding: utf-8
+  gzip: false
+  languages:
+    - en-US
+  pretty_print: true
+  limits:
+    default_items: 10
+    max_items: 100
+  map:
+    url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
+    attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+  manager:
+    name: TinyDB
+    connection: /tmp/pygeoapi-process-manager.db
+    output_dir: /tmp/
+
+logging:
+  level: INFO
+
+metadata:
+  identification:
+    title:
+      en: "52°North GSoC 2026 — OGC API Processes Demo"
+    description:
+      en: >
+        A pygeoapi instance demonstrating OGC API Processes as part of the
+        GSoC 2026 project: Developing Multi Context Protocols for OGC APIs.
+    keywords:
+      en:
+        - geospatial
+        - OGC
+        - MCP
+        - buffer
+        - geoprocessing
+    keywords_type: theme
+    terms_of_service: https://www.apache.org/licenses/LICENSE-2.0
+    url: https://github.com/52North
+  license:
+    name: Apache Software License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  provider:
+    name: "Nsiadu Uchenna — GSoC 2026 Applicant"
+    url: https://52north.org
+  contact:
+    name: "Nsiadu, Uchenna"
+    role: pointOfContact
+
+resources:
+  geospatial-buffer:
+    type: process
+    processor:
+      name: processes.buffer_process.GeospatialBufferProcessor
